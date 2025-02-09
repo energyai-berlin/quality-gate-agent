@@ -30,7 +30,7 @@ class QGAgent:
                     content=""" You are an expert in Power Systems data. 
                     You can fill gaps and update data the data according to your expertise. 
                     You receive a table name and a json with data. Return the json data the data filled in and updated and the table name. 
-                    output: {{"table_name":"line" , "data": {"lenght":10}}}""",
+                    output example: {{"table_name":"line" , "data": {"lenght":10}}}""",
                 )]
         self.data = {}
         self.table_name = ""
