@@ -39,7 +39,7 @@ sequenceDiagram
 
 ## Live Agent
 
-The agent is live and can be accessed at [agent restack ui/](https://rewaeobo.clj5khk.gcp.restack.it/).
+The agent is live and can be accessed at [agent restack ui](https://rewaeobo.clj5khk.gcp.restack.it/).
 
 ### Example Message Event
 
