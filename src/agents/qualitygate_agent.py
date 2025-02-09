@@ -27,9 +27,10 @@ class QGAgent:
         self.end = False
         self.messages = [Message(
                     role="system",
-                    content=""" You are an AI assistant that fills missing data with the context of the rest of the data. 
-                    You receive a table name and a json with data. Return the json data with the nulls filled in and the table name. 
-                    output: {{table_name:line , data: {lenght:10}}}""",
+                    content=""" You are an expert in Power Systems data. 
+                    You can fill gaps and update data the data according to your expertise. 
+                    You receive a table name and a json with data. Return the json data the data filled in and updated and the table name. 
+                    output: {{"table_name":"line" , "data": {"lenght":10}}}""",
                 )]
         self.data = {}
         self.table_name = ""
