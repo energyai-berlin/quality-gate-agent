@@ -1,7 +1,78 @@
-# Restack AI - Quickstart
+# QUALITYGATE-AGENT (POWER SYSTEMS)
 
-This repository contains a quickstart for Restack.
-It demonstrates how to set up a basic agent with tool call with a basic workflow and functions.
+The QUALITYGATE-AGENT is a specialized agent designed for POWER SYSTEMS. It leverages its expertise to fill in missing data and update existing data based on its extensive knowledge of power systems. This ensures that the data remains accurate and up-to-date, facilitating better decision-making and system management.
+
+## Tech Stack
+
+The QUALITYGATE-AGENT utilizes the following tech stack:
+
+- **Restack**: To build scalable ai agents and monitoring it
+- **Python**: The primary programming language used for the agent.
+- **API AI Calls**: The agent makes API calls to interact with the Django backend and update the database.
+
+## Architecture
+
+The agent receives JSON data and a table name, processes the data, and responds with updated JSON data. The agent then waits for a confirmation event to update the database table with the suggested information.
+
+### Data Flow
+
+1. **Receive Data**: The agent receives JSON data and the table name.
+2. **Process Data**: The agent processes the received data and generates updated JSON data.
+3. **Respond with Updated Data**: The agent responds with the updated JSON data.
+4. **Wait for Confirmation**: The agent waits for a confirmation event to update the database table with the suggested information.
+
+### Sequence Diagram
+
+```mermaid
+sequenceDiagram
+  participant User
+  participant Agent
+  participant Database
+
+  User->>Agent: Send JSON data and table name
+  Agent->>Agent: Process data
+  Agent->>User: Respond with updated JSON data
+  User->>Agent: Send confirmation event
+  Agent->>Database: Update database table
+```
+
+
+## Live Agent
+
+The agent is live and can be accessed at [agent restack ui/](https://rewaeobo.clj5khk.gcp.restack.it/).
+
+### Example Message Event
+
+Here is an example of a message event that can be sent to the agent:
+
+```json
+{
+  "agentId": "c994d166-QGAgent",
+  "runId": "0194eaf5-ece7-7a8e-8a54-521eb1110e44",
+  "eventName": "message",
+  "eventInput": {
+    "content": "{\"data\": {\"voltage\": \"15kw\", \"lenght\": \"3\"}, \"table_name\": \"line\"}"
+  }
+}
+```
+
+### Confirmation Event Example
+
+Here is an example of a confirmation event that can be sent to the agent:
+
+```json
+{
+  "agentId": "c994d166-QGAgent",
+  "runId": "0194eaf5-ece7-7a8e-8a54-521eb1110e44",
+  "eventName": "confirmation",
+  "eventInput": {
+    "confirmation": true
+  }
+}
+```
+
+
+Also, if you want to run it locally follow the steps:
 
 ## Prerequisites
 
