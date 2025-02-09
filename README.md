@@ -100,7 +100,7 @@ curl -X PUT http://localhost:6233/api/agents/QGAgent/1a3e18b5-QGAgent/04edf314-7
   -d '{
     "eventName": "message",
     "eventInput": {
-      "content": {
+      "content": '{
         "data": {
           "id": 5,
           "net": null,

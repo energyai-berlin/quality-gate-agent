@@ -1,6 +1,7 @@
 import requests
 import json
 import ast
+import re
 
 
 
@@ -25,20 +26,16 @@ def update_table(table,data):
 
 
 def parse_json_string(json_string):
+    json_string = json_string.strip()
     """
     Parse a JSON-formatted string or a Python literal string into a Python dictionary.
-    
-    This function first attempts to parse using json.loads to ensure strict JSON format.
-    If that fails, it falls back to ast.literal_eval to handle cases like single quotes or
-    Python-style literals.
-    
-    Args:
-        json_string (str): The JSON string to parse.
-    
-    Returns:
-        dict or None: The resulting dictionary if parsing is successful, otherwise None.
+    Tries json.loads first; if that fails, replaces 'true'/'false' with Python booleans 
+    before using ast.literal_eval.
     """
-    # If input is already a dict, return it.
+
+    with open("json_input.txt", "w") as file:
+        file.write(json_string)
+
     if isinstance(json_string, dict):
         return json_string
 
@@ -46,7 +43,9 @@ def parse_json_string(json_string):
         return json.loads(json_string)
     except json.JSONDecodeError as json_err:
         try:
-            result = ast.literal_eval(json_string)
+            corrected = re.sub(r"\btrue\b", "True", json_string)
+            corrected = re.sub(r"\bfalse\b", "False", corrected)
+            result = ast.literal_eval(corrected)
             if isinstance(result, dict):
                 return result
             else:

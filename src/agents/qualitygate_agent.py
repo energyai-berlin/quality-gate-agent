@@ -38,7 +38,7 @@ class QGAgent:
     async def message(self, message: MessageEvent):
         try:
             log.info(f"Received message: {message.content}")
-        
+            print(f"Received message: {message.content}")
 
             self.messages.append(Message(role="user", content=message.content or ""))
 
